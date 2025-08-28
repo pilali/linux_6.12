@@ -1,0 +1,71 @@
+# Répertoires de sortie
+output/
+kernel/
+*.img
+*.dtb
+*.dtbo
+
+# Fichiers de configuration temporaires
+configs/*.backup
+configs/kernel-config-*
+
+# Fichiers de sauvegarde
+*.backup
+*.old
+*.orig
+
+# Fichiers de compilation
+*.o
+*.ko
+*.mod.c
+*.mod
+*.cmd
+*.d
+*.order
+*.symvers
+
+# Répertoires de compilation
+arch/
+drivers/
+fs/
+kernel/
+lib/
+mm/
+net/
+scripts/
+security/
+sound/
+usr/
+virt/
+
+# Fichiers de documentation
+Documentation/
+*.txt
+*.md
+*.pdf
+
+# Fichiers de version
+.git/
+.gitignore
+.gitattributes
+
+# Fichiers de développement
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Fichiers de logs
+*.log
+*.out
+*.err
+
+# Fichiers temporaires
+/tmp/
+*.tmp
+*.temp
+
+# Fichiers de cache
+.cache/
+*.cache
