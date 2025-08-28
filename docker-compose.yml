@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  kernel-builder:
+    build:
+      context: /workspace
+      dockerfile: docker/Dockerfile
+    container_name: rpi-kernel-rt-builder
+    environment:
+      # Select kernel tree and branch. Defaults target Raspberry Pi downstream tree.
+      - KERNEL_REPO=${KERNEL_REPO:-https://github.com/raspberrypi/linux.git}
+      - KERNEL_BRANCH=${KERNEL_BRANCH:-rpi-6.12.y}
+      # Optionally apply PREEMPT_RT patch. Example: 6.12.12-rt28
+      - RT_VERSION=${RT_VERSION:-}
+      # Optional: direct RT patch URL (overrides RT_VERSION autodetection)
+      - RT_URL=${RT_URL:-}
+      # Optional localversion suffix visible in `uname -r`
+      - KERNEL_LOCALVERSION=${KERNEL_LOCALVERSION:--patchbox-rt}
+      # Use ccache to speed up rebuilds
+      - CCACHE_DIR=/ccache
+      # Jobs for make
+      - JOBS=${JOBS:-8}
+    volumes:
+      - /workspace/output:/output
+      - /workspace/input:/input
+      - /workspace/cache/ccache:/ccache
+    tty: true
+    command: ["/usr/local/bin/build-kernel"]
+
