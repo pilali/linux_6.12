@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  kernel-builder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rpi-kernel-builder
+    volumes:
+      - ./kernel:/workspace/kernel
+      - ./output:/workspace/output
+      - ./scripts:/workspace/scripts
+      - ./configs:/workspace/configs
+    environment:
+      - ARCH=arm64
+      - CROSS_COMPILE=aarch64-linux-gnu-
+      - KERNEL_VERSION=6.12.8
+      - RT_PATCH_VERSION=6.12.8-rt25
+    working_dir: /workspace
+    tty: true
+    stdin_open: true
+    command: /bin/bash
