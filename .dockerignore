@@ -1,0 +1,32 @@
+# Répertoires de sortie
+output/
+kernel/
+configs/
+
+# Fichiers de logs
+*.log
+
+# Fichiers temporaires
+*.tmp
+*.o
+*.ko
+
+# Archives téléchargées
+*.tar.xz
+*.tar.gz
+*.zip
+
+# Fichiers de sauvegarde
+*.bak
+*.backup
+
+# Répertoires Git
+.git/
+.gitignore
+
+# Documentation
+README.md
+*.md
+
+# Scripts de nettoyage
+scripts/clean.sh
